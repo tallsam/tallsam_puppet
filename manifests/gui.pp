@@ -14,6 +14,10 @@ class tallsam::gui {
   package { 'shutter':
     ensure => installed,
   }
+  package { 'tomboy':
+    ensure => installed,
+  }
+
 }
 
 class{'tallsam::gui': }

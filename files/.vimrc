@@ -33,7 +33,3 @@ colorscheme darkblue
 set filetype=php
 
 map <F2> :NERDTreeToggle<CR>
-
-set mouse=a
-
-
