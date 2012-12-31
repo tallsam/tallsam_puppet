@@ -1,14 +1,17 @@
 class tallsam {
-  package { 'vim':
-    ensure => installed,
-  }
-  file { '/home/dev/.vimrc':
-    source => '.vimrc',
-    owner => 'dev',
-    group => 'dev',
-    mode => '640',
-    require => Package['vim'],
-  }
+  include tallsam::git
+  include tallsam::shell
+  include tallsam::ubuntu
+  include tallsam::vim
+  include tallsam::gui
+  include tallsam::drupal
+
+  Class['tallsam::ubuntu'] ->
+    Class['tallsam::git'] ->
+    Class['tallsam::shell'] ->
+    Class['tallsam::gui'] ->
+    Class['tallsam::vim'] ->
+    Class['tallsam::drupal']
 }
 
-class{'tallsam': }
+Class['tallsam']
